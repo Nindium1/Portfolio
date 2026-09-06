@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christine Nindi | Web & Digital Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C2431;
+    --ink-soft: #2B3548;
+    --paper: #E7E1D0;
+    --paper-light: #F1ECDF;
+    --brass: #B08D57;
+    --teal: #2F6F62;
+    --muted: #6B6456;
+    --cream-text: #EDE7D8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--cream-text);
+    padding: 88px 0 76px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(34px, 5.4vw, 56px);
+    line-height: 1.08;
+    margin: 0 0 22px;
+    max-width: 11.5ch;
+  }
+
+  .hero p.sub {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 46ch;
+    color: #C7C2B4;
+    margin: 0 0 34px;
+  }
+
+  .status-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border: 1px solid #3A4459;
+    border-radius: 3px;
+  }
+
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #4FAE93;
+    box-shadow: 0 0 0 0 rgba(79,174,147,0.6);
+    animation: pulse 2.2s infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(79,174,147,0.55); }
+    70%  { box-shadow: 0 0 0 7px rgba(79,174,147,0); }
+    100% { box-shadow: 0 0 0 0 rgba(79,174,147,0); }
+  }
+
+  /* LEDGER */
+  .ledger { padding: 64px 0 20px; }
+
+  .ledger-heading {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid #C9C2AC;
+    padding-bottom: 14px;
+    margin: 0 0 8px;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 22px;
+    align-items: start;
+    padding: 34px 0;
+    border-bottom: 1px solid #D6D0BC;
+  }
+
+  .entry:last-child { border-bottom: none; }
+
+  .entry-no {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+
+  .entry-body h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 23px;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+
+  .entry-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 12px;
+  }
+
+  .entry-body p.desc {
+    font-size: 15px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 52ch;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 14px;
+  }
+
+  .stack-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+    color: var(--teal);
+    background: rgba(47,111,98,0.08);
+    border: 1px solid rgba(47,111,98,0.25);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .entry-body a.live-link {
+    font-size: 13.5px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--brass);
+    padding-bottom: 1px;
+  }
+  .entry-body a.live-link:hover { color: var(--teal); border-color: var(--teal); }
+
+  .stamp {
+    width: 92px;
+    height: 92px;
+    border: 1.5px solid var(--brass);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--brass);
+    transform: rotate(-6deg);
+    font-family: 'IBM Plex Mono', monospace;
+    flex-shrink: 0;
+    padding: 6px;
+  }
+
+  .stamp .metric {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .stamp .metric-label {
+    font-size: 8.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    color: var(--brass);
+  }
+  .stamp .live-tag {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 620px) {
+    .entry { grid-template-columns: 1fr; }
+    .entry-no { display: none; }
+    .stamp { transform: rotate(-4deg); width: 84px; height: 84px; }
+  }
+
+  /* SERVICES */
+  .services { padding: 60px 0 68px; }
+
+  .services-inner {
+    background: var(--paper-light);
+    border: 1px solid #D6D0BC;
+    border-radius: 6px;
+    padding: 40px 36px;
+  }
+
+  .services h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 26px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 32px;
+  }
+
+  .service-item {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .service-item .mark {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--teal);
+    font-size: 13px;
+  }
+
+  .service-item p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .service-item strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .service-grid { grid-template-columns: 1fr; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--cream-text);
+    padding: 52px 0 46px;
+    text-align: center;
+  }
+
+  footer h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 26px;
+    margin: 0 0 14px;
+  }
+
+  footer p {
+    color: #B7B2A2;
+    font-size: 14.5px;
+    margin: 0 0 24px;
+  }
+
+  footer a.contact-btn {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--brass);
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  footer .meta {
+    margin-top: 30px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: #5C6479;
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio | Web &amp; Digital Systems</p>
+      <h1>I build the digital backbone for things that actually run.</h1>
+      <p class="sub">Four self-built platforms, live in production: membership communities, an advocacy organization, and a small business storefront, each one still running today.</p>
+      <div class="status-line"><span class="dot"></span>4 platforms · self-built · live in production</div>
+    </div>
+  </section>
+
+  <section class="ledger">
+    <div class="wrap">
+      <p class="ledger-heading">The Builds</p>
+
+      <div class="entry">
+        <div class="entry-no">01</div>
+        <div class="entry-body">
+          <h3>Syotria</h3>
+          <p class="entry-role">Founder &amp; Builder</p>
+          <p class="desc">A quarterly-membership wellness community for women: structured challenges, recurring discussion sessions, and in-person meetups. Designed and built the site, and manage the membership and content systems behind it.</p>
+          <div class="stack-row">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Radix UI / shadcn</span>
+            <span class="stack-tag">React Hook Form</span>
+            <span class="stack-tag">Zod</span>
+            <span class="stack-tag">Vercel</span>
+            <span class="stack-tag">GitHub</span>
+            <span class="stack-tag">Formspree</span>
+          </div>
+          <a class="live-link" href="https://syotria.com" target="_blank" rel="noopener">syotria.com ↗</a>
+        </div>
+        <div class="stamp">
+          <span class="live-tag">LIVE</span>
+          <span class="metric">3 seasons</span>
+          <span class="metric-label">run to date</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-no">02</div>
+        <div class="entry-body">
+          <h3>Roseto Book Club</h3>
+          <p class="entry-role">Founder &amp; Builder</p>
+          <p class="desc">A seasonal membership book club, built from scratch with its own signup and season structure: simple, functional, and easy for members to navigate.</p>
+          <div class="stack-row">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Radix UI / shadcn</span>
+            <span class="stack-tag">React Hook Form</span>
+            <span class="stack-tag">Zod</span>
+            <span class="stack-tag">Vercel</span>
+            <span class="stack-tag">GitHub</span>
+            <span class="stack-tag">Formspree</span>
+          </div>
+          <a class="live-link" href="https://rosetobookclub.com" target="_blank" rel="noopener">rosetobookclub.com ↗</a>
+        </div>
+        <div class="stamp">
+          <span class="live-tag">LIVE</span>
+          <span class="metric">15+</span>
+          <span class="metric-label">members</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-no">03</div>
+        <div class="entry-body">
+          <h3>Merch Store KE</h3>
+          <p class="entry-role">Founder &amp; Builder</p>
+          <p class="desc">An online storefront for made-to-order merchandise, built on Odoo with a shop layout, product catalog, and blog. Checkout is still in progress; sales currently run through Instagram and Facebook direct orders.</p>
+          <div class="stack-row">
+            <span class="stack-tag">Odoo</span>
+          </div>
+          <a class="live-link" href="https://merchstoreke.odoo.com" target="_blank" rel="noopener">merchstoreke.odoo.com ↗</a>
+        </div>
+        <div class="stamp">
+          <span class="live-tag">LIVE</span>
+          <span class="metric">154</span>
+          <span class="metric-label">items sold</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-no">04</div>
+        <div class="entry-body">
+          <h3>Bintifilia</h3>
+          <p class="entry-role">Founder &amp; Builder, Backend &amp; Systems</p>
+          <p class="desc">A reproductive and mental health advocacy organization. Built and maintain the backend, starting from an initial foundation set up with a collaborator, now supporting a six-person team's programming, outreach, and reporting.</p>
+          <div class="stack-row">
+            <span class="stack-tag">Vue.js</span>
+            <span class="stack-tag">Strapi</span>
+            <span class="stack-tag">Supabase</span>
+            <span class="stack-tag">Render</span>
+            <span class="stack-tag">MailerLite</span>
+            <span class="stack-tag">UptimeRobot</span>
+            <span class="stack-tag">Formspree</span>
+            <span class="stack-tag">GitHub</span>
+          </div>
+          <a class="live-link" href="https://www.bintifilia.org" target="_blank" rel="noopener">bintifilia.org ↗</a>
+        </div>
+        <div class="stamp">
+          <span class="live-tag">LIVE</span>
+          <span class="metric">6-person</span>
+          <span class="metric-label">team supported</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="wrap">
+      <div class="services-inner">
+        <h2>What I can build for you</h2>
+        <div class="service-grid">
+          <div class="service-item">
+            <span class="mark">→</span>
+            <p><strong>Community &amp; membership sites:</strong> signup, structure, and content that keeps people coming back.</p>
+          </div>
+          <div class="service-item">
+            <span class="mark">→</span>
+            <p><strong>Small business storefronts:</strong> shop pages, product catalogs, and order flows.</p>
+          </div>
+          <div class="service-item">
+            <span class="mark">→</span>
+            <p><strong>Booking &amp; application systems:</strong> forms, intake flows, and simple back-office tracking.</p>
+          </div>
+          <div class="service-item">
+            <span class="mark">→</span>
+            <p><strong>Ongoing site management:</strong> ongoing edits, content updates, and ownership after launch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <h2>Have a site that needs building?</h2>
+      <p>Currently available for freelance and contract work.</p>
+      <a class="contact-btn" href="mailto:maingichristine23@gmail.com">maingichristine23@gmail.com</a>
+      <div class="meta">Christine Nindi · Nairobi, Kenya</div>
+    </div>
+  </footer>
+
+</body>
+</html>
